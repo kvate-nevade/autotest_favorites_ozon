@@ -23,18 +23,17 @@ try:
     except:
         pass
 
-    field_of_search = driver.find_element(By.CSS_SELECTOR, '[placeholder="Искать на Ozon"]') # Click on search field on ozon
+    field_of_search = driver.find_element(By.CSS_SELECTOR, '.aga7_32 > [class="ag7a_32 tsBody500Medium"]') # Click on search field on ozon
     field_of_search.click()
     time.sleep(1)
     field_of_search.send_keys('Кроссовки reebok') # Writing text on search field on ozon
     field_of_search.send_keys(Keys.ENTER)
-    time.sleep(3)
+    time.sleep(4)
     buttons_of_like = driver.find_elements(By.CSS_SELECTOR, '.jm3_23') # Find all likes buttons on result page ozon
     print(len(buttons_of_like))
-
     counter = 1
-    for e in buttons_of_like:
-        e.click()
+    for like in buttons_of_like:
+        like.click()
         print(f'Its {counter} buttons of like while i click ')
         counter += 1
         time.sleep(2)
@@ -43,8 +42,8 @@ try:
     time.sleep(2)
     action_likes = driver.find_elements(By.CSS_SELECTOR, '[class="jm3_23"] [fill="#F8104B"]') # Find all likes goods in favorites
     time.sleep(1)
-    assert len(action_likes) == 60, 'Ошибка, количество товаров в избранном меньше, чем 60'
-    print('Congratulation i all do it')
+    assert len(action_likes) == len(buttons_of_like), 'Failde. The number of products in favorites is less than necessary'
+    print('Autotest completed')
 
 except Exception as ex:
     print(ex)
