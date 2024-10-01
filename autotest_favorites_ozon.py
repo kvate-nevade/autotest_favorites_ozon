@@ -42,7 +42,7 @@ try:
     time.sleep(2)
     action_likes = driver.find_elements(By.CSS_SELECTOR, '[class="jm3_23"] [fill="#F8104B"]') # Find all likes goods in favorites
     time.sleep(1)
-    assert len(action_likes) == len(buttons_of_like), 'Failde. The number of products in favorites is less than necessary'
+    assert len(action_likes) == len(buttons_of_like), 'Failed. The number of products in favorites is less than necessary'
     print('Autotest completed')
 
 except Exception as ex:
